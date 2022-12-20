@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="{{ url_for('static', filename='/css/bootstrap.min.css')}}">
+<script src="{{ url_for('static',filename='/js/bootstrap.bundle.min.js')}}"></script>
+</head>
+<body>
+<center><h2>LR Cases</h2></center>
+
+<form action="/getdata" method="post">
+
+<div class="container-fluid">
+             <div class="input-group mb-3">
+                <label >Select Client &nbsp </label>
+                 <input list="client" name="clientname">
+                 <datalist id="client">
+
+                              <option selected></option>
+                              <option value="Client1" >Client1</option>
+                              <option value="ART">ART</option>
+                              <option value="SBC">SBC</option>
+                              <option value="ALL">All Clients</option>
+
+                </datalist>
+
+            </div>
+
+          <div class="input-group mb-3">
+                     <label >Select time &nbsp &nbsp</label>
+               <input list="days" name="searchdays">
+
+                 <datalist id="days">
+
+                              <option selected></option>
+                              <option value="1" >24 Hours</option>
+                              <option value="3" >3 Days</option>
+                              <option value="7" >7 Days</option>
+                              <option value="30" >30Days</option>
+                              <option value="60">60Days</option>
+                              <option value="90">90Days</option>
+
+                </datalist>
+              </div>
+      </div>
+     <div class="container-fluid">
+
+   <button type="submit" class="btn btn-secondary">Search</button>
+
+    <a href="{{url_for('.download',filename=downloadfilename)}}">Download</a>
+     <br>
+</form>
+
+ <br>
+
+</div>
+
+<div class="container-fluid ">
+
+    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search in summary.." title="Type in a name">
+    <h2>{{error}}</h2>
+<table class="table table-striped" id="myTable">
+    <thead>
+  <tr>
+    {% for col in colnames %}
+    <th>{{ col }}</th>
+    {% endfor %}
+  </tr>
+  <tbody>
+        {% for record in records %}
+        <tr>
+            {% for col in colnames %}
+            <td width="auto">{{ record[col] }}</td>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+</div>
+<script>
+function myFunction() {
+
+var input, filter, table, tr, td, i;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[0]; // for column one
+     td1 = tr[i].getElementsByTagName("td")[1]; // for column two
+      td2 = tr[i].getElementsByTagName("td")[2];
+       td3 = tr[i].getElementsByTagName("td")[3];
+        td4 = tr[i].getElementsByTagName("td")[4];
+         td5 = tr[i].getElementsByTagName("td")[5];
+          td6 = tr[i].getElementsByTagName("td")[6];
+           td7 = tr[i].getElementsByTagName("td")[7];
+      //     td8 = tr[i].getElementsByTagName("td")[8];
+/* ADD columns here that you want you to filter to be used on */
+    if (td) {
+      if ( (td.innerHTML.toUpperCase().indexOf(filter) > -1) || (td1.innerHTML.toUpperCase().indexOf(filter) > -1) || (td2.innerHTML.toUpperCase().indexOf(filter) > -1) ) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
+}
+</script>
+
+</body>
+</html>
