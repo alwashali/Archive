@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<remv1:Remediation-Plugin xmlns:remv1="RemediationVersion1.xsd" Name="N8N SmartResponse Automation Plugin" Guid="6e8e51f5-bf32-470d-9a3c-52975ba22ff0" Version="1">
+  <remv1:Action Name="Push AlarmID to N8N" Command="C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe" >
+    <remv1:ConstantParameter Name="Script" Switch="-file N8N_LR_Integration.ps1" Order="1" />
+    <remv1:StringParameter Name="n8nwebhook" Switch="" Order="2" >
+      <remv1:DefaultInput>
+        <remv1:StaticInput Value="WebHook URL" />
+      </remv1:DefaultInput>
+    </remv1:StringParameter>
+    <remv1:StringParameter Name="ignoressl" Switch="" Order="3" >
+      <remv1:DefaultInput>
+        <remv1:StaticInput Value="TRUE" />
+      </remv1:DefaultInput>
+    </remv1:StringParameter>
+    <remv1:StringParameter Name="alarmid" Switch="" Order="4" >
+      <remv1:DefaultInput>
+        <remv1:AlarmId />
+      </remv1:DefaultInput>
+    </remv1:StringParameter>
+  </remv1:Action >
+</remv1:Remediation-Plugin>
