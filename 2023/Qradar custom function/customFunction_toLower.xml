@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<content>
+    <custom_function>
+        <namespace>utils</namespace>
+        <name>tolower</name>
+        <return_type>string</return_type>
+        <parameter_types>string</parameter_types>
+        <execute_function_name>execute</execute_function_name>
+        <script_engine>javascript</script_engine>
+        <script>
+            function execute(input1) {
+               return  input1.toLowerCase();
+            }
+        </script>
+        <username>user1</username>
+    </custom_function>
+</content>
